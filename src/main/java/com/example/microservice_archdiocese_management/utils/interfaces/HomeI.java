@@ -19,4 +19,8 @@ public interface HomeI {
 	
 	public SuccessResponse addNewPriest(Optional<DTO.AddPriests> newPriest);
 	
+	public SuccessResponse removeParish(Optional<String> id);
+	
+	public SuccessResponse removePriest(Optional<String> id);
+	
 }

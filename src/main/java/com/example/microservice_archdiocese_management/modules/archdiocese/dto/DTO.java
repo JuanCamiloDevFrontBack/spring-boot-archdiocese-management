@@ -38,16 +38,18 @@ public record DTO() {
 			Boolean isParishPriest) implements Serializable {}
 	
 	public static record AddParished(
+			String id,
 			String name,
 			String address,
-			String location) implements Serializable {}
+			String district) implements Serializable {}
 	
 	public static record AddPriests(
+			String id,
 			String name,
 			Integer age,
 			LocalDate ordinationDate,
 			Boolean isParishPriest,
-			Integer idParish) implements Serializable {}
+			String idParish) implements Serializable {}
 	
 	public static record SuccessResponse(
 			Long idSerial,

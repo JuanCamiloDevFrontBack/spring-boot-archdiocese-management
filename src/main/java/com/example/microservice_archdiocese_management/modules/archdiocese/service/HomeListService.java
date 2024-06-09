@@ -35,7 +35,7 @@ public class HomeListService implements HomeI {
 		if (allRegistersDb.isEmpty()) {
 			throw CustomException.msgNotFound("No existen parroquias en la base de datos.");
 		}
-
+		
 		allRegistersDb.forEach(register -> {
 			// allRegisI viene de la interfaz HomeI.
 			var idToString = register.getId().toString();
@@ -56,10 +56,6 @@ public class HomeListService implements HomeI {
 		}
 		
 		allRegistersDb.forEach(register -> {
-			/* 
-			 * La puse para probar error inesperado, el cual valide el método "handleMultiException(Exception exception)".
-			 * var isNull = register.getIdParish().equals(null);
-			 * */
 			var idToString = register.getId().toString();
 			var hasParish = register.getIsParishPriest().equals("S");
 			allRegisPriests.add(DTO.priestsListInst(idToString, register.getName(), register.getAge(), register.getOrdinationDate(),
@@ -88,7 +84,7 @@ public class HomeListService implements HomeI {
 		var addRegis = ParishEntity.builder()
 				.name(newParished.get().name())
 				.address(newParished.get().address())
-				.location(newParished.get().location())
+				.location(newParished.get().district())
 				.build();
 
 		this.homedb.save(addRegis);
@@ -102,29 +98,45 @@ public class HomeListService implements HomeI {
 			throw CustomException
 					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
 		}
-
-		/*
-		 * Esta opción hace lo mismo que el if anterior, aplicaría si no existiera el
-		 * Optional.
-		 * 
-		 * var value = newPriest.orElseThrow( () -> CustomException.msgErrorRequest(
-		 * "Error en la solicitud, las propiedades del objecto presente en" +
-		 * "la petición no deben ser nullos con orElsThrow."));
-		 */
 		
 		var hasParish = newPriest.get().isParishPriest() ? "S": "N";
+		var convertToInt = Integer.valueOf(newPriest.get().idParish());
 
 		var addRegis = PriestsEntity.builder()
 				.name(newPriest.get().name())
 				.age(newPriest.get().age())
 				.ordinationDate(newPriest.get().ordinationDate())
 				.isParishPriest(hasParish)
-				.idParish(newPriest.get().idParish())
+				.idParish(convertToInt)
 				.build();
 
 		this.priestdb.save(addRegis);
 
 		return DTO.successResInst(HttpStatus.OK, "Se registro el sacerdote correctamente.");
+	}
+
+	@Override
+	public SuccessResponse removeParish(Optional<String> id) {
+		if (id.isEmpty()) {
+			throw CustomException
+					.msgErrorRequest("Error en la solicitud, no se recibió el id del registro.");
+		}
+		
+		this.homedb.deleteById(Integer.valueOf(id.get()));
+		
+		return DTO.successResInst(HttpStatus.OK, "Se eliminó el registro correctamente.");
+	}
+
+	@Override
+	public SuccessResponse removePriest(Optional<String> id) {
+		if (id.isEmpty()) {
+			throw CustomException
+					.msgErrorRequest("Error en la solicitud, no se recibió el id del registro.");
+		}
+		
+		this.priestdb.deleteById(Integer.valueOf(id.get()));
+		
+		return DTO.successResInst(HttpStatus.OK, "Se eliminó el registro correctamente.");
 	}
 
 }
