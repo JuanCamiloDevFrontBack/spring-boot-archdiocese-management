@@ -10,12 +10,12 @@ import org.springframework.http.HttpStatus;
  * */
 public record DTO() {
 	
-	public static DTO.ParishedList parishedListInst(String name, String address, String district) {
-		return new ParishedList(1L, name, address, district);
+	public static DTO.ParishedList parishedListInst(String id, String name, String address, String district) {
+		return new ParishedList(1L, id, name, address, district);
 	}
 	
-	public static DTO.PriestsList priestsListInst(String name, Integer age, LocalDate ordinationDate, Boolean isParishPriest) {
-		return new PriestsList(1L, name, age, ordinationDate, isParishPriest);
+	public static DTO.PriestsList priestsListInst(String id, String name, Integer age, LocalDate ordinationDate, Boolean isParishPriest) {
+		return new PriestsList(1L, id, name, age, ordinationDate, isParishPriest);
 	}
 	
 	public static DTO.SuccessResponse successResInst(HttpStatus codeRes, String msg) {
@@ -23,13 +23,15 @@ public record DTO() {
 	}
 
 	public static record ParishedList(
-			Long id,
+			Long idSerial,
+			String id,
 			String name,
 			String address,
 			String district) implements Serializable {}
 	
 	public static record PriestsList(
-			Long id,
+			Long idSerial,
+			String id,
 			String name,
 			Integer age,
 			LocalDate ordinationDate,
@@ -38,7 +40,7 @@ public record DTO() {
 	public static record AddParished(
 			String name,
 			String address,
-			String district) implements Serializable {}
+			String location) implements Serializable {}
 	
 	public static record AddPriests(
 			String name,
@@ -48,7 +50,7 @@ public record DTO() {
 			Integer idParish) implements Serializable {}
 	
 	public static record SuccessResponse(
-			Long id,
+			Long idSerial,
 			HttpStatus status,
 			String msg) implements Serializable {}
 	

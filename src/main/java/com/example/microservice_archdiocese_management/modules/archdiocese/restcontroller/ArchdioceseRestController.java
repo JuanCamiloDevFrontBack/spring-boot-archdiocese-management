@@ -59,7 +59,7 @@ public class ArchdioceseRestController {
 	@PostMapping("/add-priest")
 	// @valid para más adelante.
 	public ResponseEntity<DTO.SuccessResponse> addNewPriest(@RequestBody Optional<DTO.AddPriests> newPriest) {
-		return ResponseEntity.ok(null);
+		return ResponseEntity.ok(this.homeService.addNewPriest(newPriest));
 	}
 
 }

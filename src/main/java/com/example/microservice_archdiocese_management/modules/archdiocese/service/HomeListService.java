@@ -14,6 +14,7 @@ import com.example.microservice_archdiocese_management.modules.archdiocese.dao.P
 import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO;
 import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO.SuccessResponse;
 import com.example.microservice_archdiocese_management.modules.archdiocese.entity.ParishEntity;
+import com.example.microservice_archdiocese_management.modules.archdiocese.entity.PriestsEntity;
 import com.example.microservice_archdiocese_management.utils.interfaces.HomeI;
 
 @Service
@@ -37,7 +38,8 @@ public class HomeListService implements HomeI {
 
 		allRegistersDb.forEach(register -> {
 			// allRegisI viene de la interfaz HomeI.
-			allRegisI.add(DTO.parishedListInst(register.getName(), register.getAddress(), register.getLocation()));
+			var idToString = register.getId().toString();
+			allRegisI.add(DTO.parishedListInst(idToString, register.getName(), register.getAddress(), register.getLocation()));
 		});
 
 		return allRegisI;
@@ -52,10 +54,15 @@ public class HomeListService implements HomeI {
 		if (allRegistersDb.isEmpty()) {
 			throw CustomException.msgNotFound("No existen sacerdotes en la base de datos.");
 		}
-
+		
 		allRegistersDb.forEach(register -> {
+			/* 
+			 * La puse para probar error inesperado, el cual valide el método "handleMultiException(Exception exception)".
+			 * var isNull = register.getIdParish().equals(null);
+			 * */
+			var idToString = register.getId().toString();
 			var hasParish = register.getIsParishPriest().equals("S");
-			allRegisPriests.add(DTO.priestsListInst(register.getName(), register.getAge(), register.getOrdinationDate(),
+			allRegisPriests.add(DTO.priestsListInst(idToString, register.getName(), register.getAge(), register.getOrdinationDate(),
 					hasParish));
 		});
 
@@ -70,31 +77,54 @@ public class HomeListService implements HomeI {
 		}
 
 		/*
-		 * try {
+		 * Esta opción hace lo mismo que el if anterior, aplicaría si no existiera el
+		 * Optional.
 		 * 
-		 * } catch (Exception e) { throw CustomException.msgErrorRequest(e); }
+		 * var value = newParished.orElseThrow( () -> CustomException.msgErrorRequest(
+		 * "Error en la solicitud, las propiedades del objecto presente en" +
+		 * "la petición no deben ser nullos con orElsThrow."));
 		 */
 
-		var value = newParished.orElseThrow(
-				() -> CustomException.msgErrorRequest(
-				"Error en la solicitud, las propiedades del objecto presente en"
-				+ "la petición no deben ser nullos."));
-		 
-		 var addRegis = ParishEntity.builder()
-				 .name(value.name())
-				 .address(value.address())
-				 .location(value.district())
-				 .build();
-		 
+		var addRegis = ParishEntity.builder()
+				.name(newParished.get().name())
+				.address(newParished.get().address())
+				.location(newParished.get().location())
+				.build();
+
 		this.homedb.save(addRegis);
 
-		return DTO.successResInst(HttpStatus.OK, "Proceso Éxitoso.");
+		return DTO.successResInst(HttpStatus.OK, "Se registro la parroquia correctamente.");
 	}
 
 	@Override
 	public SuccessResponse addNewPriest(Optional<DTO.AddPriests> newPriest) {
-		// TODO Auto-generated method stub
-		return null;
+		if (newPriest.isEmpty()) {
+			throw CustomException
+					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
+		}
+
+		/*
+		 * Esta opción hace lo mismo que el if anterior, aplicaría si no existiera el
+		 * Optional.
+		 * 
+		 * var value = newPriest.orElseThrow( () -> CustomException.msgErrorRequest(
+		 * "Error en la solicitud, las propiedades del objecto presente en" +
+		 * "la petición no deben ser nullos con orElsThrow."));
+		 */
+		
+		var hasParish = newPriest.get().isParishPriest() ? "S": "N";
+
+		var addRegis = PriestsEntity.builder()
+				.name(newPriest.get().name())
+				.age(newPriest.get().age())
+				.ordinationDate(newPriest.get().ordinationDate())
+				.isParishPriest(hasParish)
+				.idParish(newPriest.get().idParish())
+				.build();
+
+		this.priestdb.save(addRegis);
+
+		return DTO.successResInst(HttpStatus.OK, "Se registro el sacerdote correctamente.");
 	}
 
 }

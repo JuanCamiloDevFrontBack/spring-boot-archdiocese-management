@@ -13,7 +13,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RestControllerAdvice
 public class HandleException extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler({CustomException.RecordsNotFound.class, SQLException.class})
+	// TODO: maneja las excepciones inesperadas.
+	@ExceptionHandler({Exception.class, RuntimeException.class, SQLException.class})
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	protected ResponseEntity<DTOException> handleMultiException(Exception exception) {
+
+		var notFoundError = DTOException.builder().message((String) exception.getMessage())
+				.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(notFoundError);
+
+	}
+	
+	@ExceptionHandler(CustomException.RecordsNotFound.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	protected ResponseEntity<DTOException> handleExceptionNotFound(CustomException.RecordsNotFound exception) {
 
