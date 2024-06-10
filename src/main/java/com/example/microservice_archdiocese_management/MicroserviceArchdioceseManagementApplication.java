@@ -18,6 +18,7 @@ public class MicroserviceArchdioceseManagementApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
+				// TODO: restrigin el acceso al microservicio.
 				registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowedHeaders("*");
 			}
 		};
