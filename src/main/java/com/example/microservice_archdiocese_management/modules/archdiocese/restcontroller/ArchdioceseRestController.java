@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,14 +55,26 @@ public class ArchdioceseRestController {
 
 	@PostMapping("/add-parishes")
 	// @valid para más adelante.
-	public ResponseEntity<DTO.SuccessResponse> addNewParish(@RequestBody Optional<DTO.AddParished> newParished) {
+	public ResponseEntity<DTO.SuccessResponse> addNewParish(@RequestBody Optional<DTO.InfoParished> newParished) {
 		return ResponseEntity.ok(this.homeService.addNewParish(newParished));
 	}
 	
 	@PostMapping("/add-priest")
 	// @valid para más adelante.
-	public ResponseEntity<DTO.SuccessResponse> addNewPriest(@RequestBody Optional<DTO.AddPriests> newPriest) {
+	public ResponseEntity<DTO.SuccessResponse> addNewPriest(@RequestBody Optional<DTO.InfoPriests> newPriest) {
 		return ResponseEntity.ok(this.homeService.addNewPriest(newPriest));
+	}
+	
+	@PatchMapping("/update-parishes")
+	// @valid para más adelante.
+	public ResponseEntity<DTO.SuccessResponse> updateParish(@RequestBody Optional<DTO.InfoParished> newParished) {
+		return ResponseEntity.ok(this.homeService.updateParish(newParished));
+	}
+	
+	@PatchMapping("/update-priest")
+	// @valid para más adelante.
+	public ResponseEntity<DTO.SuccessResponse> updatePriest(@RequestBody Optional<DTO.InfoPriests> newPriest) {
+		return ResponseEntity.ok(this.homeService.updatePriest(newPriest));
 	}
 	
 	@DeleteMapping("/delete-parishes/{id}")

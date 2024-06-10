@@ -17,8 +17,8 @@ public class HandleException extends ResponseEntityExceptionHandler {
 	@ExceptionHandler({Exception.class, RuntimeException.class, SQLException.class})
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	protected ResponseEntity<DTOException> handleMultiException(Exception exception) {
-
-		var notFoundError = DTOException.builder().message((String) exception.getMessage())
+		
+		var notFoundError = DTOException.builder().message("Ocurrio un error no definido al efectuar la acción.")
 				.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(notFoundError);

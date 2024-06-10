@@ -1,16 +1,23 @@
 package com.example.microservice_archdiocese_management.modules.archdiocese.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.microservice_archdiocese_management.modules.archdiocese.entity.ParishEntity;
 
 @Repository
 public interface HomeIDAO extends JpaRepository<ParishEntity, Integer> {
 
-	/*
-	 * Por si se llega a necesitar
-	 * @Query(value = "Query SQL quí", nativeQuery = true)
-	public LoginDAOEntity searchByUserFirst();*/
+	@Modifying
+    @Transactional
+	@Query(value = "UPDATE parish SET name = :name, address = :address, district = :district WHERE id = :id", nativeQuery = true)
+    public void updateParishDb(@Param("id") Integer id,
+                      @Param("name") String name,
+                      @Param("address") String address,
+                      @Param("district") String district);
 	
 }

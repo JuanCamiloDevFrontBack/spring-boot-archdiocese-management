@@ -37,13 +37,13 @@ public record DTO() {
 			LocalDate ordinationDate,
 			Boolean isParishPriest) implements Serializable {}
 	
-	public static record AddParished(
+	public static record InfoParished(
 			String id,
 			String name,
 			String address,
 			String district) implements Serializable {}
 	
-	public static record AddPriests(
+	public static record InfoPriests(
 			String id,
 			String name,
 			Integer age,

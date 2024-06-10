@@ -12,6 +12,8 @@ import com.example.microservice_archdiocese_management.exception.CustomException
 import com.example.microservice_archdiocese_management.modules.archdiocese.dao.HomeIDAO;
 import com.example.microservice_archdiocese_management.modules.archdiocese.dao.PriestsIDAO;
 import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO;
+import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO.InfoParished;
+import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO.InfoPriests;
 import com.example.microservice_archdiocese_management.modules.archdiocese.dto.DTO.SuccessResponse;
 import com.example.microservice_archdiocese_management.modules.archdiocese.entity.ParishEntity;
 import com.example.microservice_archdiocese_management.modules.archdiocese.entity.PriestsEntity;
@@ -66,7 +68,7 @@ public class HomeListService implements HomeI {
 	}
 
 	@Override
-	public SuccessResponse addNewParish(Optional<DTO.AddParished> newParished) {
+	public SuccessResponse addNewParish(Optional<DTO.InfoParished> newParished) {
 		if (newParished.isEmpty()) {
 			throw CustomException
 					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
@@ -93,7 +95,7 @@ public class HomeListService implements HomeI {
 	}
 
 	@Override
-	public SuccessResponse addNewPriest(Optional<DTO.AddPriests> newPriest) {
+	public SuccessResponse addNewPriest(Optional<DTO.InfoPriests> newPriest) {
 		if (newPriest.isEmpty()) {
 			throw CustomException
 					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
@@ -114,6 +116,35 @@ public class HomeListService implements HomeI {
 
 		return DTO.successResInst(HttpStatus.OK, "Se registro el sacerdote correctamente.");
 	}
+	
+	@Override
+	public SuccessResponse updateParish(Optional<InfoParished> editParished) {
+		if (editParished.isEmpty()) {
+			throw CustomException
+					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
+		}
+
+		var convertIdToInt = Integer.valueOf(editParished.get().id());		
+		this.homedb.updateParishDb(convertIdToInt, editParished.get().name(), editParished.get().address(), editParished.get().district());
+
+		return DTO.successResInst(HttpStatus.OK, "Se editó el registro correctamente.");
+	}
+
+	@Override
+	public SuccessResponse updatePriest(Optional<InfoPriests> editPriest) {
+		if (editPriest.isEmpty()) {
+			throw CustomException
+					.msgErrorRequest("Error en la solicitud, no hay información presente en el cuerpo de la petición.");
+		}
+		
+		var convertIdTabToInt = Integer.valueOf(editPriest.get().id());
+		var hasParish = editPriest.get().isParishPriest() ? "S": "N";
+		var convertIdToInt = Integer.valueOf(editPriest.get().idParish());
+
+		this.priestdb.updatePriestDb(convertIdTabToInt, editPriest.get().name(), editPriest.get().age(), editPriest.get().ordinationDate(), hasParish, convertIdToInt);
+
+		return DTO.successResInst(HttpStatus.OK, "Se editó el registro correctamente.");
+	}
 
 	@Override
 	public SuccessResponse removeParish(Optional<String> id) {
@@ -121,7 +152,7 @@ public class HomeListService implements HomeI {
 			throw CustomException
 					.msgErrorRequest("Error en la solicitud, no se recibió el id del registro.");
 		}
-		
+			
 		this.homedb.deleteById(Integer.valueOf(id.get()));
 		
 		return DTO.successResInst(HttpStatus.OK, "Se eliminó el registro correctamente.");
