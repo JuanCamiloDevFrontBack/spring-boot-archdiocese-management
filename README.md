@@ -1,53 +1,68 @@
-# Proyecto en Java V.17 - Spring Boot V.3.2.0
-# Temática: User Management
+# Proyecto en Java V.17 - Spring Boot V.3.3.0
+# Temática: Administración de Usuarios
 ## Estado del Proyecto: En Desarrollo
 
-Este repositorio contiene un proyecto práctico sobre Java V.17 y Spring Boot V.3.2.0,
+Este repositorio contiene un proyecto práctico sobre Java V.17 y Spring Boot V.3.3.0,
 que permite efectuar acciones de tipo `CRUD` sobre la información a manipular
-utilizando la arquitectura de microservicio, complementada con una base de datos en mariadb
+utilizando la arquitectura de microservicio, complementada con una base de datos en postgresSQL
 que almacena y gestiona toda la información de los usuarios.
-Este proyecto se divide en 4 ramas `main`, `develop`, `database-mariadb` y `collections-postman`.
+Este proyecto se divide en 4 ramas `main`, `develop`, `database-postgres`, `collections-test` y `deploy-render`.
 
+Los perfiles siguen en implementación:
 [//]: <> (Adicionalmente el proyecto cuenta con 2 ambientes, el de `Producción` y `Desarrollo`.)
 
 ## Estructura del Proyecto
 
 La estructura del proyecto se diseño teniendo en consideración las mejores prácticas de organización de un proyecto Java con Spring y Spring Boot, quedando su estructura de la siguiente manera:
 * src
-    * main/java/com/autodidact/usermanagement
+    * main/java/com/example/microservice_archdiocese_management
         * exception
-        * module
+        * modules
             * module-xyz
-                * controller
+                * restcontroller
                 * dao
                 * dto
                 * entity
                 * service
-        * util
+        * utils
     * resource
 
 ## Url API con sus Endpoints
 
 La `API` proporciona las siguintes direcciones a acceder por el cliente para retornar la información:
-* `GET: http://localhost:9091/autodidact/login/welcome-msg`
-* `POST: /url???`
-* `POST: /url???`
+
+* `GET: http://localhost:9091/archdiocese-management/features`
+* `GET: http://localhost:9091/archdiocese-management/features/list-parishes`
+* `GET: http://localhost:9091/archdiocese-management/features/list-priests`
+
+* `POST: http://localhost:9091/archdiocese-management/features/add-parishes`
+* `POST: http://localhost:9091/archdiocese-management/features/add-priests`
+
+* `PATCH: http://localhost:9091/archdiocese-management/features/update-parishes`
+* `PATCH: http://localhost:9091/archdiocese-management/features/update-priests`
+
+* `DELETE: http://localhost:9091/archdiocese-management/features/delete-parishes/{id}`
+* `DELETE: http://localhost:9091/archdiocese-management/features/delete-parishes/{id}`
+
+Nota:
+1- Al probar en despliegue se reemplaza el `http://localhost:9091/` por `https://spring-boot-archdiocese-management.onrender.com/`.
+2- La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando.
 
 ## Tecnologías Utilizadas
 
 Se utilizan las siguientes herramientas:
 * Java V.17
 * Spring
-    * Spring Boot V.3.2.0
+    * Spring Boot V.3.3.0
     * Spring Web 
     * Lombok
-    * JDCB API
+    * JDCB POSTGRES
     * JPA
     * Developer Tools
     * JUnit
     * mockito
 * Maven V.3.8.6
-* MariaDB V10.4.28
+* PostgresSQL V16.3
 
 ## Ramas
 
@@ -64,14 +79,14 @@ así como otras funcionalidades como la creación de usuarios, asignación de pe
 Cabe mencionar que el proyecto ya tiene configurado 2 ambientes, correspondientes a `application-prod.properties`(si se despliega a producción tomaría este archivo) y
 `application-dev.properties`(al desplegarlo en modo desarrollo toma este archivo).
 
-### `database-mariadb`
+### `database-postgres`
 
-En la rama `database-mariadb` encontrarás el script de mariadb, el cual contiene la base de datos exportada
+En la rama `database-postgres` encontrarás el script de mariadb, el cual contiene la base de datos exportada
 en phpmyAdmin que gestiona la información de los usuarios.
 
-### `collections-postman`
+### `collections-test`
 
-En la rama `collections-postman` encontrarás las colecciones de postman, donde se valido el funcionamiento del microservicio RestFullAPI.
+En la rama `collections-test` encontrarás las colecciones de Postman o Insomnia, donde se valido el funcionamiento del microservicio RestFullAPI.
 
 ## Instrucciones de Ejecución
 
