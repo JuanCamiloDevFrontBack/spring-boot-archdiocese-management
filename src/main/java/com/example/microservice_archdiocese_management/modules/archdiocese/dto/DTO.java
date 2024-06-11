@@ -18,6 +18,10 @@ public record DTO() {
 		return new PriestsList(1L, id, name, age, ordinationDate, isParishPriest);
 	}
 	
+	public static DTO.PriestsList parishedListInst(String id, String name, Integer age, LocalDate ordinationDate, Boolean isParishPriest) {
+		return new PriestsList(1L, id, name, age, ordinationDate, isParishPriest);
+	}
+	
 	public static DTO.SuccessResponse successResInst(HttpStatus codeRes, String msg) {
 		return new SuccessResponse(1L, codeRes, msg);
 	}

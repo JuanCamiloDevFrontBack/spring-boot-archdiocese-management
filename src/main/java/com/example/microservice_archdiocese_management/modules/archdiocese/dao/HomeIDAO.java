@@ -1,5 +1,7 @@
 package com.example.microservice_archdiocese_management.modules.archdiocese.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +14,9 @@ import com.example.microservice_archdiocese_management.modules.archdiocese.entit
 @Repository
 public interface HomeIDAO extends JpaRepository<ParishEntity, Integer> {
 
+	@Query(value = "SELECT id, name FROM parish", nativeQuery = true)
+	public List<Object[]> getParishList();
+	
 	@Modifying
     @Transactional
 	@Query(value = "UPDATE parish SET name = :name, address = :address, district = :district WHERE id = :id", nativeQuery = true)
