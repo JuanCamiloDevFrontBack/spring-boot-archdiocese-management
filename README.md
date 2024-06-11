@@ -6,7 +6,7 @@ Este repositorio contiene un proyecto práctico sobre Java V.17 y Spring Boot V.
 que permite efectuar acciones de tipo `CRUD` sobre la información a manipular
 utilizando la arquitectura de microservicio, complementada con una base de datos en postgresSQL
 que almacena y gestiona toda la información de los usuarios.
-Este proyecto se divide en 4 ramas `main`, `develop`, `database-postgres`, `collections-test` y `deploy-render`.
+Este proyecto se divide en 5 ramas `main`, `develop`, `database-postgres`, `collections-test` y `deploy-render`.
 
 Los perfiles siguen en implementación:
 [//]: <> (Adicionalmente el proyecto cuenta con 2 ambientes, el de `Producción` y `Desarrollo`.)
