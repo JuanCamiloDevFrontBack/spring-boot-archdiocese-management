@@ -8,8 +8,6 @@ utilizando la arquitectura de microservicio, complementada con una base de datos
 que almacena y gestiona toda la información de los usuarios.
 Este proyecto se divide en 5 ramas `main`, `develop`, `database-postgres`, `collections-test` y `deploy-render`.
 
-[//]: <> (Los perfiles siguen en implementación.)
-
 [//]: <> (Adicionalmente el proyecto cuenta con 2 ambientes, el de `Producción` y `Desarrollo`.)
 
 ## Estructura del Proyecto
