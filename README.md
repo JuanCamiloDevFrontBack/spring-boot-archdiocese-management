@@ -96,17 +96,17 @@ Para poner en ejecución el proyecto de la presente rama se requieren los siguie
 * Git instalado para clonar el repositorio remoto en la máquina local.
 * Java JDK instalado para correrlo en la máquina local.
 * Maven instalado para la administración del proyecto y sus dependencias.
-* Xampp instalado, porque ya trae mariadb al instalarlo, pero si gusta puede descargar mariadb sin utilizar xampp.
+* PostgresSQL instalado ya sea de forma tradicional o utilizando Docker, en este caso se utilizó Docker para las pruebas en local.
 * Editor de código ó IDE instalado, en este caso se utilizó Suit Tools 4, pero puede utilizar otro, por ejemplo IntelliJ.
-* Clonar el repositorio: `https://github.com/JuanCamiloDevFrontBack/user-management.git`.
-* Postman instalado para probar el microservicio, sin embargo puede utilizar el de su preferencia o bien utilizar como alternativa `Insomnia`.
+* Clonar el repositorio: `https://github.com/JuanCamiloDevFrontBack/spring-boot-archdiocese-management.git`.
+* Insomnia instalado para probar el microservicio, sin embargo puede utilizar el de su preferencia o bien utilizar como alternativa `Postman`.
 
 ### Pasos para Poner en Ejecución la Aplicación
 
 Ejecutar los siguientes comandos:
-1. `git clone https://github.com/JuanCamiloDevFrontBack/user-management.git`.
-2. Importar el script que esta en la rama `database-mariadb` en `PhpMyAdmin`.
+1. `git clone https://github.com/JuanCamiloDevFrontBack/spring-boot-archdiocese-management.git`.
+2. Importar el script que esta en la rama `database-postgres` en `DBeaver`.
 3. Ejecutar la base de datos de forma local importada en el paso # 2.
-4. `mvn clean install` ó desde el propio IDE o edItor de código.
-5. Poner en ejecución el proyecto del repositorio: `https://github.com/JuanCamiloDevFrontBack/user-management.git`.
-7. Abrir en postman o el navegador la siguiente url: `GET: http://localhost:9091/autodidact/login/welcome-msg`.
+4. `mvn clean install` ó `mvn clean package` ó desde el propio IDE o edItor de código, si desea omitir los tests agregar al comando de mvn la bandera `-DskipTests`.
+5. Poner en ejecución el proyecto del repositorio: `https://github.com/JuanCamiloDevFrontBack/angular-archdiocese-management.git`.
+7. Abrir en postman o el navegador la siguiente url: `GET: http://localhost:9091/archdiocese-management/features`.
