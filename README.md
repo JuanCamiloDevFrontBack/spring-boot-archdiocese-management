@@ -46,8 +46,8 @@ La `API` proporciona las siguintes direcciones a acceder por el cliente para ret
 * `DELETE: http://localhost:9091/archdiocese-management/features/delete-parishes/{id}`
 
 Nota:
-1- Al probar en despliegue se reemplaza el `http://localhost:9091/` por `https://spring-boot-archdiocese-management.onrender.com/`.
-2- La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando.
+* Al probar en despliegue se reemplaza el `http://localhost:9091/` por `https://spring-boot-archdiocese-management.onrender.com/`. (1)
+* La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando. (2)
 
 ## Tecnologías Utilizadas
 
