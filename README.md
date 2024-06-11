@@ -59,7 +59,7 @@ Se utilizan las siguientes herramientas:
     * JPA
     * Developer Tools
     * JUnit
-    * mockito
+    * Mockito
 * Maven V.3.8.6
 * PostgresSQL V16.3
 
