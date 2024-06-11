@@ -74,16 +74,15 @@ en este caso el archivo `README`.
 
 ### `develop`
 
-En la rama `develop` encontrarás el proyecto de Java con Spring -  Spring Boot, el cual gestiona usuarios. Incluye la creación de menús para las pantallas a las que pueden acceder,
-así como otras funcionalidades como la creación de usuarios, asignación de permisos y la actualización de su información de contacto, entre otras.
+En la rama `develop` encontrarás el proyecto de Java con Spring -  Spring Boot, el cual gestiona usurios religiosos y parroquias de la Arquediocesis. Incluye funcionalidades como la consulta, creación, edición y eliminación de parroquias y sacerdotes entre otras, persistiendo la información en una base de datos sql.
 
 Cabe mencionar que el proyecto ya tiene configurado 2 ambientes, correspondientes a `application-prod.properties`(si se despliega a producción tomaría este archivo) y
-`application-dev.properties`(al desplegarlo en modo desarrollo toma este archivo).
+`application-dev.properties`(al desplegarlo en modo desarrollo toma este archivo). --> están actualemnte en implementación.
 
 ### `database-postgres`
 
-En la rama `database-postgres` encontrarás el script de mariadb, el cual contiene la base de datos exportada
-en phpmyAdmin que gestiona la información de los usuarios.
+En la rama `database-postgres` encontrarás el script de postgresSQL, el cual contiene la base de datos exportada
+en dbeaver que gestiona la información de los usuarios, la cual en local se utilizó a partir de un contenedor de docker.
 
 ### `collections-test`
 
