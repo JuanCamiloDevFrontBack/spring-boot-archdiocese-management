@@ -32,6 +32,7 @@ La `API` proporciona las siguintes direcciones a acceder por el cliente para ret
 
 Ambiente:
 * `En local`: api = `localhost:9091`
+* `En local con Docker`: api = `localhost:8001`
 * `En Producción`: apiDeploy = `spring-boot-archdiocese-management.onrender.com`
 
 Punto de Acceso:
