@@ -33,9 +33,7 @@ La `API` proporciona las siguintes direcciones a acceder por el cliente para ret
 `En local`: api = `localhost:9091`
 
 `En Producción`: apiDeploy = `spring-boot-archdiocese-management.onrender.com`
-
-
-
+<br>
 * `GET: http://{api}/archdiocese-management/features`
 * `GET: http://{api}/archdiocese-management/features/list-parishes`
 * `GET: http://{api}/archdiocese-management/features/list-priests`
