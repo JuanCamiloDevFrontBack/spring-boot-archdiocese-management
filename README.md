@@ -83,7 +83,7 @@ En la rama `develop` encontrarás el proyecto de Java con Spring -  Spring Boot,
 Cabe mencionar que el proyecto ya tiene configurado 2 ambientes, correspondientes a `application-prod.properties`(si se despliega a producción tomaría este archivo) y
 `application-dev.properties`(al desplegarlo en modo desarrollo toma este archivo). --> están actualemnte en implementación.
 
-### deploy-render
+### `deploy-render`
 En la rama `deploy-render` encontrarás el proyecto de Java estable y listo para llevar a producción.
 
 ### `database-postgres`
