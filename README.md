@@ -83,6 +83,9 @@ En la rama `develop` encontrarás el proyecto de Java con Spring -  Spring Boot,
 Cabe mencionar que el proyecto ya tiene configurado 2 ambientes, correspondientes a `application-prod.properties`(si se despliega a producción tomaría este archivo) y
 `application-dev.properties`(al desplegarlo en modo desarrollo toma este archivo). --> están actualemnte en implementación.
 
+`deploy-render`
+En la rama `deploy-render` encontrarás el proyecto de Java estable y listo para llevar a producción.
+
 ### `database-postgres`
 
 En la rama `database-postgres` encontrarás el script de postgresSQL, el cual contiene la base de datos exportada
@@ -113,4 +116,11 @@ Ejecutar los siguientes comandos:
 3. Ejecutar la base de datos de forma local importada en el paso # 2.
 4. `mvn clean install` ó `mvn clean package` ó desde el propio IDE o edItor de código, si desea omitir los tests agregar al comando de mvn la bandera `-DskipTests`.
 5. Poner en ejecución el proyecto del repositorio: `https://github.com/JuanCamiloDevFrontBack/angular-archdiocese-management.git`.
-7. Abrir en postman o el navegador la siguiente url: `GET: http://localhost:9091/archdiocese-management/features`.
+7. Abrir en postman o el navegador la siguiente url: `GET: http://{api}/archdiocese-management/features`.
+
+### Rama Deploy-Render
+
+Para poner en ejecución el proyecto de la presente rama se requieren los siguientes items:
+
+* Abrir el navegador web de su preferencia e ingresar al siguiente enlace web: `http://{apiDeploy}/archdiocese-management/features`.
+
