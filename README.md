@@ -30,11 +30,10 @@ La estructura del proyecto se diseño teniendo en consideración las mejores pr�
 
 La `API` proporciona las siguintes direcciones a acceder por el cliente para retornar la información:
 
-En local: `api` = `localhost:9091`
+`En local`: api = `localhost:9091`
 
-ó
+`En Producción`: apiDeploy = `spring-boot-archdiocese-management.onrender.com`
 
-En Producción: `apiDeploy` = `spring-boot-archdiocese-management.onrender.com`
 
 * `GET: http://{api}/archdiocese-management/features`
 * `GET: http://{api}/archdiocese-management/features/list-parishes`
