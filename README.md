@@ -51,7 +51,7 @@ Puntos de Acceso:
 
 Nota:
 1. Al probar en despliegue se reemplaza el `http://{api}/` por `https://{apiDeploy}/`.
-2. La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando.
+2. La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando ó que almacene la información en memoria.
 
 ## Tecnologías Utilizadas
 
