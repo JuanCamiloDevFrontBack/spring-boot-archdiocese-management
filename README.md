@@ -30,21 +30,25 @@ La estructura del proyecto se diseño teniendo en consideración las mejores pr�
 
 La `API` proporciona las siguintes direcciones a acceder por el cliente para retornar la información:
 
-* `GET: http://localhost:9091/archdiocese-management/features`
-* `GET: http://localhost:9091/archdiocese-management/features/list-parishes`
-* `GET: http://localhost:9091/archdiocese-management/features/list-priests`
+En local: `api` = `localhost:9091`
+ó
+En Producción: `apiDeploy` = `spring-boot-archdiocese-management.onrender.com`
 
-* `POST: http://localhost:9091/archdiocese-management/features/add-parishes`
-* `POST: http://localhost:9091/archdiocese-management/features/add-priests`
+* `GET: http://{api}/archdiocese-management/features`
+* `GET: http://{api}/archdiocese-management/features/list-parishes`
+* `GET: http://{api}/archdiocese-management/features/list-priests`
 
-* `PATCH: http://localhost:9091/archdiocese-management/features/update-parishes`
-* `PATCH: http://localhost:9091/archdiocese-management/features/update-priests`
+* `POST: http://{api}/archdiocese-management/features/add-parishes`
+* `POST: http://{api}/archdiocese-management/features/add-priests`
 
-* `DELETE: http://localhost:9091/archdiocese-management/features/delete-parishes/{id}`
-* `DELETE: http://localhost:9091/archdiocese-management/features/delete-parishes/{id}`
+* `PATCH: http://{api}/archdiocese-management/features/update-parishes`
+* `PATCH: http://{api}/archdiocese-management/features/update-priests`
+
+* `DELETE: http://{api}/archdiocese-management/features/delete-parishes/{id}`
+* `DELETE: http://{api}/archdiocese-management/features/delete-parishes/{id}`
 
 Nota:
-1. Al probar en despliegue se reemplaza el `http://localhost:9091/` por `https://spring-boot-archdiocese-management.onrender.com/`.
+1. Al probar en despliegue se reemplaza el `http://{api}/` por `https://{apiDeploy}/`.
 2. La base de datos esta activa por tiempo muy limitado, por ello es posible que si se consulta en producción no este funcionando.
 
 ## Tecnologías Utilizadas
