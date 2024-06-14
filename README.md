@@ -35,7 +35,7 @@ Ambiente:
 * `En local con Docker`: api = `localhost:8001`
 * `En Producción`: apiDeploy = `spring-boot-archdiocese-management.onrender.com`
 
-Punto de Acceso:
+Puntos de Acceso:
 * `GET: http://{api}/archdiocese-management/features`
 * `GET: http://{api}/archdiocese-management/features/list-parishes`
 * `GET: http://{api}/archdiocese-management/features/list-priests`
