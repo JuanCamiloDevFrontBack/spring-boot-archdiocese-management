@@ -123,5 +123,5 @@ Ejecutar los siguientes comandos:
 
 Para poner en ejecución el proyecto de la presente rama se requieren los siguientes items:
 
-* Abrir el navegador web de su preferencia e ingresar al siguiente enlace web: `http://{apiDeploy}/archdiocese-management/features`.
+* Abrir el navegador web de su preferencia e ingresar al siguiente enlace web: `http://spring-boot-archdiocese-management.onrender.com/archdiocese-management/features`.
 
