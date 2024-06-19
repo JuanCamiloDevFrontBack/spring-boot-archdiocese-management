@@ -68,6 +68,7 @@ Se utilizan las siguientes herramientas:
     * Mockito
 * Maven V.3.8.6
 * PostgresSQL V16.3
+* Docker Engine V25.0.3
 
 ## Ramas
 
